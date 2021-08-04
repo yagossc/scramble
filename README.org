@@ -1,0 +1,69 @@
+* Scramble
+
+  This is an exploratory project for the usage of =Clojure= and
+  =ClojureScript=. It's made of only two simple parts:
+
+  - A Web Server (that handles HTTP requests);
+  - And a UI Application (that talks to the web server).
+
+  The Web Server has only one valid route, i.e., =/scramble= that
+  receives two string values as query parameters. The UI Application
+  is nothing but a two field form and submit button that sends the
+  expected two strings to the server.
+
+** Project Depencies
+
+   Packages:
+   - Clojure
+   - leiningen
+
+   Clojure Modules:
+   - org.clojure/clojure
+   - compojure
+   - http-kit
+   - org.clojure/clojurescript
+   - reagent
+   - re-frame
+   - day8.re-frame/http-fx
+
+** Web Server
+
+   All source files are contained in the =scramble/= directory,
+   alongside more detailed descriptions in its [[file:scramble/README.org][README]] file.
+
+*** How to run
+
+    Use =leiningen= to run the server:
+
+    #+BEGIN_SRC sh
+    > cd scramble/
+    > lein run
+    #+END_SRC
+
+** UI Application
+
+   All source files are contained in the =scramble-frontend/=
+   directory, alongside more detailed descriptions in its [[file:scramble-frontend/README.org][README]] file.
+
+*** How to run
+
+    Since there's no =HTTP Server= providing this frontend, please,
+    open the file located at
+    =scramble-frontend/resources/public/index.html= in your preferred
+    browser.
+
+    If you wish to rebuild the page, again, use =leiningen= to do so:
+
+    #+BEGIN_SRC sh
+    > cd scramble-frontend/
+    > lein cljsbuild once dev
+    #+END_SRC
+
+    You can also have it automatically rebuild the page in case of
+    changes:
+
+    #+BEGIN_SRC sh
+    > cd scramble-frontend/
+    > lein cljsbuild auto dev
+    #+END_SRC
+
