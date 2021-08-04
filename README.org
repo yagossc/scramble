@@ -47,23 +47,22 @@
 
 *** How to run
 
-    Since there's no =HTTP Server= providing this frontend, please,
-    open the file located at
-    =scramble-frontend/resources/public/index.html= in your preferred
-    browser.
-
-    If you wish to rebuild the page, again, use =leiningen= to do so:
+    To build the page, again, use =leiningen=:
 
     #+BEGIN_SRC sh
     > cd scramble-frontend/
     > lein cljsbuild once dev
     #+END_SRC
 
-    You can also have it automatically rebuild the page, in case of
-    changes, by running:
+    If you wish to tweak the code, you can also have it automatically
+    rebuild the page, in case of changes, by running:
 
     #+BEGIN_SRC sh
     > cd scramble-frontend/
     > lein cljsbuild auto dev
     #+END_SRC
 
+    Since there's no =HTTP Server= providing this frontend, please,
+    open the file located at
+    =scramble-frontend/resources/public/index.html= in your preferred
+    browser.

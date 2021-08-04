@@ -53,6 +53,16 @@
    Nope, sorry.
    #+END_SRC
 
+   You can change the default value for the api and port in the file
+   =src/scramble_frontend/config.cljs=, i.e.:
+
+   #+BEGIN_SRC clojure
+   ;; Defines the api port for sending the requests.
+   (def api-port "DESIRED_PORT")
+   #+END_SRC
+
+   Or you can set the environment varialbe =SCRAMBLE_PORT=.
+
 * References
 
   - [[https://leiningen.org][https://leiningen.org]]

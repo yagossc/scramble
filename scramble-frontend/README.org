@@ -36,8 +36,8 @@
 ** How to run
 
    Since there's no =HTTP Server= providing this frontend, please,
-   open the file located at =resources/public/index.html= in your
-   preferred browser.
+   open the file located at =resources/public/index.html=, after the
+   build process, in your preferred browser.
 
    In case the =API= is not running in =localhost:8080=, please edit
    the file =src/scramble_frontend/config.cljs= and add the correct
