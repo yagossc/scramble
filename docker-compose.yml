@@ -1,0 +1,14 @@
+version: '3.0'
+
+services:
+  scramble-env:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./scramble/:/scramble-api
+      - ./scramble-frontend/:/scramble-frontend
+    ports:
+      - "8080:8080"
+    restart: always
+    command: [ "tail", "-f", "/dev/null" ]

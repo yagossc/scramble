@@ -23,7 +23,27 @@
    Use leiningen:
 
    #+BEGIN_SRC sh
-   lein run
+   > lein run
+   #+END_SRC
+
+   You can also use =Docker/Docker Compose= in case you don't have or
+   wish to have all the dependecies in your local environment.
+
+   First, build, create and start the container with the virtual
+   environment by running:
+
+   #+BEGIN_SRC sh
+   > docker-compose up -d
+   #+END_SRC
+
+   This approach avoids having to reinstall the dependecies every time
+   the container is created, especially because there isn't an obvious
+   way of "pre-installing" the project dependencies using =leiningen=.
+
+   Now, run the server:
+
+   #+BEGIN_SRC sh
+   > docker-compose exec -w '/scramble-api' scramble-env sh -c "lein run"
    #+END_SRC
 
 ** How to test
@@ -31,7 +51,14 @@
    Again, use leiningen:
 
    #+BEGIN_SRC sh
-   lein test
+   > lein test
+   #+END_SRC
+
+   And, with =Docker=, remember to build the environment as stated
+   above, then run:
+
+   #+BEGIN_SRC sh
+   > docker-compose exec -w '/scramble-api' scramble-env sh -c "lein test"
    #+END_SRC
 
 ** API Routes
@@ -52,6 +79,16 @@
    > curl 'http://localhost:8080/scramble?base-string="abc"&target-string="abcd"'
    Nope, sorry.
    #+END_SRC
+
+   You can change the default value for the api and port in the file
+   =src/scramble_frontend/config.cljs=, i.e.:
+
+   #+BEGIN_SRC clojure
+   ;; Defines the api port for sending the requests.
+   (def api-port "DESIRED_PORT")
+   #+END_SRC
+
+   Or you can set the environment varialbe =SCRAMBLE_PORT=.
 
 * References
 
