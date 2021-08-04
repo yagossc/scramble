@@ -40,6 +40,26 @@
     > lein run
     #+END_SRC
 
+    You can also use =Docker/Docker Compose= in case you don't have or
+    wish to have all the dependecies in your local environment.
+
+    First, build, create and start the container with the virtual
+    environment by running:
+
+    #+BEGIN_SRC sh
+    > docker-compose up -d
+    #+END_SRC
+
+    This approach avoids having to reinstall the dependecies every time
+    the container is created, especially because there isn't an obvious
+    way of "pre-installing" the project dependencies using =leiningen=.
+
+    Now, run the server:
+
+    #+BEGIN_SRC sh
+    > docker-compose exec -w '/scramble-api' scramble-env sh -c "lein run"
+    #+END_SRC
+
 ** UI Application
 
    All source files are contained in the =scramble-frontend/=
@@ -60,6 +80,19 @@
     #+BEGIN_SRC sh
     > cd scramble-frontend/
     > lein cljsbuild auto dev
+    #+END_SRC
+
+    Or, using =Docker/Docker Compose= (remember to build/start the
+    container):
+
+    #+BEGIN_SRC sh
+    > docker-compose exec -w '/scramble-frontend' scramble-env sh -c "lein cljsbuild once dev"
+    #+END_SRC
+
+    Or, have it watch for changes with:
+
+    #+BEGIN_SRC sh
+    > docker-compose exec -w '/scramble-frontend' scramble-env sh -c "lein cljsbuild auto dev"
     #+END_SRC
 
     Since there's no =HTTP Server= providing this frontend, please,

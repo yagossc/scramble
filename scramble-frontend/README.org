@@ -20,7 +20,7 @@
 
 ** How to build
 
-   For building the web page, use leiningen:
+   For building the web page, use =leiningen=:
 
    #+BEGIN_SRC sh
    > lein cljsbuild once dev
@@ -31,6 +31,32 @@
 
    #+BEGIN_SRC sh
    > lein cljsbuild auto dev
+   #+END_SRC
+
+   You can also use =Docker/Docker Compose= in case you don't have or
+   wish to have all the dependecies in your local environment.
+
+   First, build, create and start the container with the virtual
+   environment by running:
+
+   #+BEGIN_SRC sh
+   > docker-compose up -d
+   #+END_SRC
+
+   This approach avoids having to reinstall the dependecies every time
+   the container is created, especially because there isn't an obvious
+   way of "pre-installing" the project dependencies using =leiningen=.
+
+   Now build the page with:
+
+   #+BEGIN_SRC sh
+   > docker-compose exec -w '/scramble-frontend' scramble-env sh -c "lein cljsbuild once dev"
+   #+END_SRC
+
+   Or, have it watch for changes with:
+
+   #+BEGIN_SRC sh
+   > docker-compose exec -w '/scramble-frontend' scramble-env sh -c "lein cljsbuild auto dev"
    #+END_SRC
 
 ** How to run
@@ -50,6 +76,8 @@
    ;; Defines the api host for sending the requests.
    (def api-host "API_LOCATION")
    #+END_SRC
+
+   Then, rebuild the page.
 
 * References
 
