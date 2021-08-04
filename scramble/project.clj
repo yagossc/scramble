@@ -2,7 +2,11 @@
   :description "FIXME: write description"
   :url "https://github.com/yagossc/scramble/scramble"
   :license {:name "MIT LICENSE" :url ""}
-  :dependencies [[org.clojure/clojure "1.10.1"]]
+  :dependencies [[org.clojure/clojure "1.10.1"]
+                 [compojure "1.6.2"]
+                 [http-kit "2.5.3"]
+                 [ring/ring-defaults "0.3.2"]]
+
   :repl-options {:init-ns scramble.core}
   :main ^:skip-aot scramble.core
   :target-path "target/%s"
