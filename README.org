@@ -6,9 +6,9 @@
   - A Web Server (that handles HTTP requests);
   - And a UI Application (that talks to the web server).
 
-  The Web Server has only one valid route, i.e., =/scramble= that
+  The Web Server has only one valid route, i.e., =/scramble=, which
   receives two string values as query parameters. The UI Application
-  is nothing but a two field form and submit button that sends the
+  is nothing but a two field form and a submit button that sends the
   expected two strings to the server.
 
 ** Project Depencies
@@ -59,8 +59,8 @@
     > lein cljsbuild once dev
     #+END_SRC
 
-    You can also have it automatically rebuild the page in case of
-    changes:
+    You can also have it automatically rebuild the page, in case of
+    changes, by running:
 
     #+BEGIN_SRC sh
     > cd scramble-frontend/

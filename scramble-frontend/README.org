@@ -26,8 +26,8 @@
    > lein cljsbuild once dev
    #+END_SRC
 
-   You can also have it automatically rebuild the page in case of
-   changes:
+   You can also have it automatically rebuild the page, in case of
+   changes, by running:
 
    #+BEGIN_SRC sh
    > lein cljsbuild auto dev
@@ -38,6 +38,18 @@
    Since there's no =HTTP Server= providing this frontend, please,
    open the file located at =resources/public/index.html= in your
    preferred browser.
+
+   In case the =API= is not running in =localhost:8080=, please edit
+   the file =src/scramble_frontend/config.cljs= and add the correct
+   information, for example:
+
+   #+BEGIN_SRC clojure
+   ;; Defines the api port for sending the requests.
+   (def api-port "CORRECT_PORT")
+
+   ;; Defines the api host for sending the requests.
+   (def api-host "API_LOCATION")
+   #+END_SRC
 
 * References
 
