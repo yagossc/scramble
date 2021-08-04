@@ -1,0 +1,62 @@
+* Scramble API
+
+  This is an API for checking that, given two separate words, base and
+  target, the target word can be formed by a portion of base's
+  letters.
+
+** Project Dependencies
+
+   For building and running the project you'll need:
+
+   - Clojure (tested on: clojure "1.10.1")
+   - Leiningen (tested on: Leiningen 2.9.6 on Java 1.8.0_292 OpenJDK
+     64-Bit Server VM)
+
+   And also, as clojure dependencies, you'll need:
+
+   - compojure (1.6.2)
+   - http-kit (2.5.3)
+   - ring/ring-defaults (0.3.2)
+
+** How to run
+
+   Use leiningen:
+
+   #+BEGIN_SRC sh
+   lein run
+   #+END_SRC
+
+** How to test
+
+   Again, use leiningen:
+
+   #+BEGIN_SRC sh
+   lein test
+   #+END_SRC
+
+** API Routes
+
+   The API has a single route:
+
+   | Route    | Type | Params                                | Returns         |
+   | scramble | GET  | base-string=[a-z]&target-string=[a-z] | true or  false  |
+
+
+   Note: the API will return =404 Not Found= for everything else.
+
+   You can use =curl= for sample requests:
+
+   #+BEGIN_SRC sh
+   > curl 'http://localhost:8080/scramble?base-string="abc"&target-string="abc"'
+   Yep, that works.
+   > curl 'http://localhost:8080/scramble?base-string="abc"&target-string="abcd"'
+   Nope, sorry.
+   #+END_SRC
+
+* References
+
+  - [[https://leiningen.org][https://leiningen.org]]
+  - [[https://github.com/weavejester/compojure][https://github.com/weavejester/compojure]]
+  - [[https://github.com/http-kit/http-kit][https://github.com/http-kit/http-kit]]
+  - [[https://github.com/ring-clojure/ring-defaults][https://github.com/ring-clojure/ring-defaults]]
+  - [[https://clojure.org/reference/data_structures][https://clojure.org/reference/data_structures]]

@@ -1,0 +1,59 @@
+* Scramble
+
+  This a single page appication to talk to the =Scramble API= present
+  in this project.
+
+** Project Dependencies
+
+   For building and running the project you'll need:
+
+   - Clojure (tested on: clojure "1.10.1")
+   - ClojureScript (tested on: clojure/clojurescript "1.10.773")
+   - Leiningen (tested on: Leiningen 2.9.6 on Java 1.8.0_292 OpenJDK
+     64-Bit Server VM)
+
+   And also, as clojure dependencies, you'll need:
+
+   - reagent (1.0.0)
+   - re-frame (1.2.0)
+   - day8.re-frame/http-fx
+
+** How to build
+
+   For building the web page, use leiningen:
+
+   #+BEGIN_SRC sh
+   > lein cljsbuild once dev
+   #+END_SRC
+
+   You can also have it automatically rebuild the page, in case of
+   changes, by running:
+
+   #+BEGIN_SRC sh
+   > lein cljsbuild auto dev
+   #+END_SRC
+
+** How to run
+
+   Since there's no =HTTP Server= providing this frontend, please,
+   open the file located at =resources/public/index.html= in your
+   preferred browser.
+
+   In case the =API= is not running in =localhost:8080=, please edit
+   the file =src/scramble_frontend/config.cljs= and add the correct
+   information, for example:
+
+   #+BEGIN_SRC clojure
+   ;; Defines the api port for sending the requests.
+   (def api-port "CORRECT_PORT")
+
+   ;; Defines the api host for sending the requests.
+   (def api-host "API_LOCATION")
+   #+END_SRC
+
+* References
+
+  - https://clojurescript.org/guides/
+  - https://day8.github.io/re-frame/re-frame
+  - https://github.com/weavejester/hiccup
+  - https://github.com/JulianBirch/cljs-ajax#ajax-request
