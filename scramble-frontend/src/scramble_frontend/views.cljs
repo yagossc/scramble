@@ -1,6 +1,7 @@
 (ns scramble-frontend.views
   (:require
    [re-frame.core :as re-frame]
+   [scramble-frontend.components :as components]
    [scramble-frontend.subs :as subs]
    [scramble-frontend.events :as events]))
 
@@ -11,24 +12,11 @@
 
     [:div
      [:h1 "Flexiana's Scramble"]
-     [:form
-      [:div
-       [:label "Source"]
-       [:input {:type "text"
-                :value @base-string
-                :on-change #(re-frame/dispatch
-                             [::events/update-base-string (-> % .-target .-value)])}]]
 
-      [:div
-       [:label "Target"]
-       [:input {:type "text"
-                :value @target-string
-                :on-change #(re-frame/dispatch
-                             [::events/update-target-string (-> % .-target .-value)])}]]
-
-      [:input {:type "button"
-           :value "Scramble away!"
-               :on-click #(re-frame/dispatch [::events/fetch-scramble])}]]
+     [:div [components/form-component
+            ["Source" "Target"]
+            [@base-string @target-string]
+            [::events/update-base-string ::events/update-target-string]]]
 
      [:br]
      [:span @scramble-result]]))
