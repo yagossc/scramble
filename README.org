@@ -11,6 +11,40 @@
   is nothing but a two field form and a submit button that sends the
   expected two strings to the server.
 
+  The target problem is determining if a =portion= of a given
+  =string-A= can be used to form a given =string-B=.
+
+** Solution Strategy
+
+   There's a pretty straight forward solution that includes creating a
+   /frequencies map/ for each of the input strings and then simply
+   comparing the maps entries, like ilustrated below:
+
+   [[file:assets/two-frequencies-maps.png]]
+
+   In this strategy, there are three core iterations:
+
+   - Iterate through word-1 to build the frequencies map;
+   - Iterate through word-2 to build the frequencies map;
+   - Iterate through the target word's map to check that it can be
+     formed using word-1.
+
+   However, there's a slightly more efficient way of doing this, which
+   includes only two core iterations:
+
+   - Iterate through word-1 to build the frequencies map;
+   - Iterate through word-2 and check word-1 frequencies map, updating
+     it to decide if word-2 can be formed from word-1;
+
+   This can be illustrated as below:
+
+   [[file:assets/single-frequencies-map.png]]
+
+   The result of this strategy is an, also slightly, less elegant code,
+   but more efficient solution. As for the code, please check the file
+   =scramble/src/scramble/core.clj= for the functions =scramble?= and
+   =occur-in?=.
+
 ** Project Depencies
 
    Packages:

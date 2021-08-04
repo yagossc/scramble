@@ -28,9 +28,6 @@
     (empty? (filter false? (occur-in? base-frequencies target-string)))))
 
 
-;; REPL testing
-;; (scramble? "abcdefffffffffff" "abcdefg")
-
 (defn parse-response
   "Parses and returns the HTTP response."
   [status body]
@@ -48,9 +45,10 @@
         target-string (-> req :params :target-string)]
     ;; debugging
     (pp/pprint req)
+    (parse-response 200
     (if (scramble? base-string target-string)
-      (parse-response 200 "Yep, that works.")
-      (parse-response 200 "Nope, sorry."))))
+      "Yep, that works."
+      "Nope, sorry."))))
 
 
 (defroutes app-routes
