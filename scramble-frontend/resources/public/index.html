@@ -4,12 +4,24 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>scramble-frontend</title>
+    <style>
+      html, body {
+          height: 100%;
+          margin: 0;
+      }
+
+      .full-height {
+          height: 100%;
+          align: center;
+      }
+    </style>
   </head>
   <body>
     <noscript>
-      scramble-frontend is a JavaScript app. Please enable JavaScript to continue.
+      scramble-frontend is a JavaScript app.
+      Please enable JavaScript to continue.
     </noscript>
-    <div id="app"></div>
+    <div id="app" class="full-height"></div>
     <script src="js/compiled/app.js"></script>
     <script>scramble_frontend.core.init();</script>
   </body>

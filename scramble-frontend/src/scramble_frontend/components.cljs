@@ -2,6 +2,7 @@
   (:require
    [re-frame.core :as re-frame]
    [scramble-frontend.events :as events]
+   [scramble-frontend.style :as css]
    [scramble-frontend.subs :as subs]))
 
 (defn submit-button
@@ -9,6 +10,7 @@
   [label]
   [:input {:type "button"
            :value label
+           :style (css/submit-button-style)
            :on-click #(re-frame/dispatch [::events/fetch-scramble])}])
 
 
@@ -21,15 +23,17 @@
         [event-1 event-2] events]
     [:form
      [:div
-      [:label label-1]
+      [:label (css/label-style) label-1]
       [:input {:type "text"
+               :style (css/input-text-field-style)
                :value sub-1
                :on-change #(re-frame/dispatch
                             [event-1 (-> % .-target .-value)])}]]
 
      [:div
-      [:label label-2]
+      [:label (css/label-style) label-2]
       [:input {:type "text"
+               :style (css/input-text-field-style)
                :value sub-2
                :on-change #(re-frame/dispatch
                             [event-2 (-> % .-target .-value)])}]]
